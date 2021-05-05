@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+<browser>chrome</browser>
+<website>https://www.10bis.co.il/</website>
+<userName>email</userName>
+<password>password123</password>
+<userName>name</userName>
+</config>
