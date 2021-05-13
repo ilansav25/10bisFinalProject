@@ -12,6 +12,8 @@ public class Main extends Base {
 
 	// start registration
 	public boolean register() throws InterruptedException {
+		if (isExist(By.xpath("//*[@id=\"wm-shoutout-337329\"]/div[1]")))
+			click(By.xpath("//*[@id=\"wm-shoutout-337329\"]/div[1]"));
 
 		click(By.xpath("//button[text()='הרשמה']"));
 		if (isExist(By.id("modal-title")))
@@ -20,23 +22,24 @@ public class Main extends Base {
 			return false;
 
 	}
-	
-	// start login
-		public boolean login() throws InterruptedException {
-			
-			//Click connection
-			
-			Thread.sleep(3000);
-			click(By.xpath("//button[text()='התחברות']"));
-			
-			
-			Thread.sleep(3000);
-			if (isExist(By.xpath("//*[@id=\"modal-title\"][text()='איזה כיף שחזרת אלינו!']")))
-				return true;
-			else
-				return false;
 
-		}
+	// start login
+	public boolean login() throws InterruptedException {
+		if (isExist(By.xpath("//*[@id=\"wm-shoutout-337329\"]/div[1]")))
+			click(By.xpath("//*[@id=\"wm-shoutout-337329\"]/div[1]"));
+
+		// Click connection
+
+		Thread.sleep(3000);
+		click(By.xpath("//button[text()='התחברות']"));
+
+		Thread.sleep(3000);
+		if (isExist(By.xpath("//*[@id=\"modal-title\"][text()='איזה כיף שחזרת אלינו!']")))
+			return true;
+		else
+			return false;
+
+	}
 
 	// select account
 	public boolean selectAccount() throws InterruptedException {
@@ -46,7 +49,7 @@ public class Main extends Base {
 				"//div[@class='dropdown custom-select step-one open']//li[@data-value='freelancer-or-smb'][@class='option']"));
 		return true;
 	}
-	
+
 	// select account
 	public boolean searchClickRest(String rest) throws InterruptedException {
 
@@ -55,13 +58,13 @@ public class Main extends Base {
 		Thread.sleep(1000);
 		click(By.xpath("//*[@id=\"searchResults\"]/div/a[1]/div/div[1]/div"));
 		String name = getText(By.xpath("//*[@id=\"root\"]/div[2]/div[1]/section/header/div/div[2]/div[1]/h1"));
-		
-		if(name.equals(rest))
+
+		if (name.equals(rest))
 			return true;
 		else
 			return false;
 	}
-	
+
 	// select meal
 	public boolean mealOrder() throws InterruptedException {
 
@@ -75,9 +78,9 @@ public class Main extends Base {
 		click(By.xpath("//*[@id=\"modals\"]/div/div/div/div/div/div[4]/div/button"));
 		Thread.sleep(3000);
 		click(By.xpath("//*[@id=\"menu-body-wrapper\"]/div[2]/aside/div/div[2]/div[1]/button"));
-			return true;
+		return true;
 	}
-	
+
 	// select meal
 	public boolean MinimalMealOrder(String errorMsg) throws InterruptedException {
 
@@ -85,12 +88,12 @@ public class Main extends Base {
 		click(By.xpath("//*[@id=\"menu-body-wrapper\"]/div[2]/div/section[1]/div/div[2]/div[3]/button"));
 		Thread.sleep(3000);
 		click(By.xpath("//*[@id=\"modals\"]/div/div/div/div/div/div[4]/div/button"));
-		Thread.sleep(3000); 
+		Thread.sleep(3000);
 		click(By.xpath("//*[@id=\"menu-body-wrapper\"]/div[2]/aside/div/div[2]/div[1]/button"));
-		String Msg = getText(By.xpath("//*[@id=\"modal-content\"]/div[1]"));	
-		
-		if(Msg.equals(errorMsg))
-		return true;
+		String Msg = getText(By.xpath("//*[@id=\"modal-content\"]/div[1]"));
+
+		if (Msg.equals(errorMsg))
+			return true;
 		else
 			return false;
 	}
